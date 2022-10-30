@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
-import { withRouter, Switch } from 'react-router'
-import { BrowserRouter as Router, Route } from "react-router-dom";
-import { Link } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate, Link } from 'react-router-dom';
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./theme/bootstrap.css";
@@ -9,7 +7,7 @@ import "./theme/bootstrap.css";
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 
-import MapPage from './components/pages/map-page.component';
+import MapPage from './components/pages/map/map-page.component';
 import AboutPage from './components/pages/about-page.component';
 import ContactPage from './components/pages/contact-page.component';
 
@@ -17,6 +15,7 @@ import data from './data/data.js';
 
 import logo from './logo.svg';
 import './App.css';
+import RadixTree from './radix/radixTree';
 
 const WEBSITE_URL = "un0btanium.github.io/hell-is-others-cheatsheet/";
 
@@ -24,16 +23,30 @@ const PATCH_VERSION = data.patchVersion;
 
 class App extends Component {
 
-  constructor(props) {
+	constructor(props) {
+		super(props);
 
-    this.state = {
+		let radixTree = new RadixTree();
+		data.npcs.forEach((npc) => {
+			radixTree.addWord(npc.name);
+			npc.location.address.forEach((address) => {
+				radixTree.addWord(address);
+			});
+		});
+		data.locations.forEach(location => {
+			radixTree.addWord(location.name);
+		})
 
-    };
-  }
-  
+		this.state = {
+			npcs: data.npcs,
+			locations: data.locations,
+			radixTree: radixTree
+		};
+	}
+	
 	render() {
 		return (
-			<Router>
+			<BrowserRouter>
 				<div className="full-screenable-node">
 					<Navbar bg="dark" variant="dark" expand="xl" style={{ boxShadow: '0px 2px 5px #000000' }}>
 						<Navbar.Brand style={{ marginLeft: "15%" }}>
@@ -58,33 +71,17 @@ class App extends Component {
 						</Navbar.Collapse>
 					</Navbar>
 
-					<Switch>
-						<Route exact path="/hell-is-others-cheatsheet/map" render=
-							{(props) => <MapPage {...props}
-								{...this.state}
-							/>}
-						/>
-						<Route exact path="/hell-is-others-cheatsheet/about" render=
-							{(props) => <AboutPage {...props}
-
-							/>}
-						/>
-						<Route exact path="/hell-is-others-cheatsheet/contact" render=
-							{(props) => <ContactPage {...props}
-
-							/>}
-						/>
-						<Route render=
-							{(props) => <MapPage {...props}
-								{...this.state}
-							/>}
-						/>
-					</Switch>
+					<Routes>
+						<Route path= "/" element={ <Navigate to="/hell-is-others-cheatsheet/map" />} />
+						<Route path="/hell-is-others-cheatsheet/map" element={<MapPage {...this.state} />} />
+						<Route path="/hell-is-others-cheatsheet/about" element={<AboutPage />} />
+						<Route path="/hell-is-others-cheatsheet/contact" element={<ContactPage />} />
+					</Routes>
 				</div>
-			</Router>
+			</BrowserRouter>
 		);
 	}
 
 }
 
-export default withRouter(App);
+export default App;

@@ -36,3 +36,21 @@
     transform: rotate(360deg);
   }
 }
+
+.small {
+  font: italic 14px;
+  font-weight: 800;
+}
+
+.red {
+  fill: red;
+}
+.green {
+  fill: green;
+}
+.lime {
+  fill: lime;
+}
+.black {
+  fill: black;
+}
