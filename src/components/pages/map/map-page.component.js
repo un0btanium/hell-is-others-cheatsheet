@@ -62,8 +62,8 @@ export default class MapPage extends Component {
 		});
 
 		return <div style={{ display: "inline-block", width: "100%", height:"100%"}}>
-			<div style={{ display: "flex", alignItems: "center", justifyContent: "center", margin: "25px 0px 15px 0px" }}>
-				<Container style={{ padding:"0", margin:"20px", marginTop: "0px", maxWidth:"100000px"}}>
+			<div style={{ display: "flex", alignItems: "center", justifyContent: "center", margin: "5px 0px 0px 0px" }}>
+				<Container style={{ padding:"0", margin:"0 20px 0 20px", maxWidth:"100000px"}}>
 					<Row>
 						<Col md="3" style={{ textAlign:"center", marginTop: "50px", maxWidth: "500px" }}>
 							<Form.Control
