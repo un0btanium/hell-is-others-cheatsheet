@@ -181,8 +181,7 @@ var data = {
 			  address: ["East Humble"],
 			  x: 640,
 			  y: 906
-			},
-			showNameBelow: true
+			}
 		},
 		{
 			name: "Mother Beranice",
@@ -351,6 +350,44 @@ var data = {
 			y: 743,
 			showNameBelow: true
 		},
+		{
+			x: 593,
+			y: 376,
+			showNameBelow: true
+		},
+		{
+			x: 373,
+			y: 878,
+			showNameBelow: true
+		},
+		{
+			x: 618,
+			y: 922,
+			showNameBelow: true
+		},
+		{
+			x: 577,
+			y: 731,
+			showNameBelow: true
+		},
+		{
+			x: 71,
+			y: 562
+		},
+		{
+			x: 106,
+			y: 361
+		},
+		{
+			x: 267,
+			y: 172,
+			showNameBelow: true
+		},
+		{
+			x: 418,
+			y: 95,
+			showNameBelow: true
+		}
 	]
 };
 export default data;
