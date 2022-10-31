@@ -8,14 +8,24 @@ export default class NPC extends Component {
 	}
 	
     render () {
-		let color = this.isHighlighted() ? "lime" : "black";
+		if (this.props.visibility === 0) {
+			return null;
+		}
+
+		let highlight = this.isHighlighted();
+		if (this.props.visibility === 2 && !highlight) {
+			return null;
+		}
+
+		let color = highlight ? "lawngreen" : "black";
+		let shadow = highlight ? " shadow" : " shadow-white";
 		let offsetX = -(this.props.npc.name.length * 8 / 2);
 		let offsetY = (this.props.npc.showNameBelow) ? 18 : -10;
 
 		return (
 			<>
 				<text
-					className={'small ' + color}
+					className={'small ' + color + shadow}
 					x={this.props.npc.location.x+offsetX}
 					y={this.props.npc.location.y+offsetY}
 				>

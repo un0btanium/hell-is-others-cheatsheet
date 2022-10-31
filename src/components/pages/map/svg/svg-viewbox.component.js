@@ -37,7 +37,7 @@ export default class SVGViewbox extends Component {
 				}}
 			>
 				<svg
-					style={{background: "url('./map.png')", backgroundSize: "auto" }}
+					style={{background: "url('./map-en.png')", backgroundSize: "auto" }}
 					width="100%"
 					viewBox="0 0 1190 971"
 					preserveAspectRatio="xMidYMid meet"

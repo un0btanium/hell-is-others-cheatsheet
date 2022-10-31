@@ -36,10 +36,12 @@ class App extends Component {
 		data.locations.forEach(location => {
 			radixTree.addWord(location.name);
 		})
+		radixTree.addWord("atm");
 
 		this.state = {
 			npcs: data.npcs,
 			locations: data.locations,
+			atms: data.atms,
 			radixTree: radixTree
 		};
 	}
@@ -72,7 +74,7 @@ class App extends Component {
 					</Navbar>
 
 					<Routes>
-						<Route path= "/" element={ <Navigate to="/hell-is-others-cheatsheet/map" />} />
+						<Route path="/hell-is-others-cheatsheet/" element={ <Navigate to="/hell-is-others-cheatsheet/map" />} />
 						<Route path="/hell-is-others-cheatsheet/map" element={<MapPage {...this.state} />} />
 						<Route path="/hell-is-others-cheatsheet/about" element={<AboutPage />} />
 						<Route path="/hell-is-others-cheatsheet/contact" element={<ContactPage />} />
