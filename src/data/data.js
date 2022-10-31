@@ -387,6 +387,14 @@ var data = {
 			x: 418,
 			y: 95,
 			showNameBelow: true
+		},
+		{
+			x: 285,
+			y: 352
+		},
+		{
+			x: 192,
+			y: 313
 		}
 	]
 };
