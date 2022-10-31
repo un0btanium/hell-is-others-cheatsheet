@@ -81,7 +81,8 @@ var data = {
 			  address: ["Sword's End", "Venture Boulevard"],
 			  x: 292,
 			  y: 460
-			}
+			},
+			showNameBelow: true
 		},
 		{
 			name: "Deacon",
@@ -130,7 +131,8 @@ var data = {
 			  address: ["La Cittadella", "Hope Century Hospital"],
 			  x: 262,
 			  y: 668
-			}
+			},
+			showNameBelow: true
 		},
 		{
 			name: "Andre",
@@ -146,7 +148,8 @@ var data = {
 			  address: ["La Cittadella", "Prudence Avenue"],
 			  x: 274,
 			  y: 710
-			}
+			},
+			showNameBelow: true
 		},
 		{
 			name: "Maggie",
@@ -221,7 +224,7 @@ var data = {
 			path: "M 669,67 L 771,67 L 771,205 L 669,205 L 669,67"
 		},
 		{
-			name: "Pont Lättnad",
+			name: "Lättnad Bridge",
 			path: "M 223,234 L 270,234 L 270,320 L 223,320 L 223,234"
 		},
 		{
@@ -229,7 +232,7 @@ var data = {
 			path: "M 2,309 L 226,309 L 226,489 L 2,489 L 2,309"
 		},
 		{
-			name: "Jardin des Simples",
+			name: "Garden of Simples",
 			path: "M 133,405 L 218,405 L 218,485 L 133,485 L 133,405"
 		},
 		{
@@ -257,7 +260,7 @@ var data = {
 			path: "M 5,548 L 332,548 L 332,741 L 5,741 L 5,548"
 		},
 		{
-			name: "Hospital Hope Century",
+			name: "Hope Century Hospital",
 			path: "M 210,547 L 313,547 L 313,676 L 210,676 L 210,547"
 		},
 		{
@@ -285,7 +288,7 @@ var data = {
 			path: "M 653,789 L 751,789 L 751,953 L 653,953 L 653,789"
 		},
 		{
-			name: "Theatre Bellocanto",
+			name: "Bellocanto House Threatre",
 			path: "M 290,799 L 371,799 L 371,898 L 290,898 L 290,799"
 		},
 		{
@@ -305,7 +308,7 @@ var data = {
 			path: "M 653,314 L 698,314 L 698,739 L 653,739 L 653,314"
 		},
 		{
-			name: "Pont Ureshinaki",
+			name: "Ureshinaki Bridge",
 			path: "M 640,428 L 711,428 L 711,444 L 640,444 L 640,428"
 		},
 		{
@@ -313,7 +316,7 @@ var data = {
 			path: "M 575,545 L 651,545 L 651,740 L 575,740 L 575,545"
 		},
 		{
-			name: "Pont Million",
+			name: "Million Bridge",
 			path: "M 428,221 L 477,221 L 477,304 L 428,304 L 428,221"
 		},
 		{
@@ -321,7 +324,7 @@ var data = {
 			path: "M 701,548 L 766,548 L 766,631 L 701,631 L 701,548"
 		},
 		{
-			name: "Pont Jineung",
+			name: "Jineung Bridge ",
 			path: "M 643,625 L 703,625 L 703,647 L 643,647 L 643,625"
 		},
 		{
@@ -329,8 +332,12 @@ var data = {
 			path: "M 125,30 L 191,30 L 191,97 L 125,97 L 125,30"
 		},
 		{
-			name: "La Zavtra",
+			name: "Zavtra River",
 			path: "M 77,230 L 803,230 L 803,302 L 77,302 L 77,230"
+		},
+		{
+			name: "Anavasi Passage",
+			path: "M 445,409 L 471,409 L 471,483 L 445,483 L 445,409"
 		},
 	],
 	atms: [

@@ -13,14 +13,17 @@ export default class MapPage extends Component {
 	constructor(props) {
 		super(props);
 
+		let defaultSettings = JSON.stringify({
+			showLocations: 2,
+			showNPCs: 1,
+			showATMs: 1
+		});
+		let settings = JSON.parse(localStorage.getItem('settings') || defaultSettings);
+
 		this.state = {
 			searchResults: [],
 			placeholder: this.getPlaceholder(),
-			settings: {
-				showLocations: 2,
-				showNPCs: 1,
-				showATMs: 1
-			}
+			settings: settings
 		};
 	}
 	
@@ -73,7 +76,7 @@ export default class MapPage extends Component {
 								style={{ width: "100%", marginBottom: "5px" }}
 								type="radio"
 								name="npc-visibility"
-								defaultValue={1}
+								defaultValue={this.state.settings.showNPCs}
 								onChange={(value) => this.onChangeSettings("showNPCs", value)}
 							>
 								<ToggleButton variant="success" id="npc-1" value={1}>
@@ -90,7 +93,7 @@ export default class MapPage extends Component {
 								style={{ width: "100%", marginBottom: "5px" }}
 								type="radio"
 								name="atm-visibility"
-								defaultValue={1}
+								defaultValue={this.state.settings.showATMs}
 								onChange={(value) => this.onChangeSettings("showATMs", value)}
 							>
 								<ToggleButton id="atm-1" value={1}>
@@ -107,7 +110,7 @@ export default class MapPage extends Component {
 								style={{ width: "100%" }}
 								type="radio"
 								name="location-visibility"
-								defaultValue={2}
+								defaultValue={this.state.settings.showLocations}
 								onChange={(value) => this.onChangeSettings("showLocations", value)}
 							>
 								{/* <ToggleButton variant="warning" id="location-1" value={1}>
@@ -135,11 +138,13 @@ export default class MapPage extends Component {
 	}
 
 	getPlaceholder() {
-		console.log(this.props)
-		if (Math.random() < 0.5) {
+		let num = Math.random();
+		if (num < 0.4) {
 			return this.props.npcs[Math.floor(Math.random() * this.props.npcs.length)].name
+		} else if (num > 0.6) {
+			return this.props.locations[Math.floor(Math.random() * this.props.locations.length)].name
 		}
-		return this.props.locations[Math.floor(Math.random() * this.props.locations.length)].name
+		return "ATM";
 	}
 
 	onSearchFieldChange(e) {
@@ -151,7 +156,6 @@ export default class MapPage extends Component {
 		}
 		
 		this.props.radixTree.getWords(e.target.value).then((searchResults) => {
-			console.log(searchResults)
 			this.setState({
 				searchResults: searchResults
 			});
@@ -161,6 +165,7 @@ export default class MapPage extends Component {
 	onChangeSettings(setting, value) {
 		let settings = {...this.state.settings};
 		settings[setting] = value;
+		localStorage.setItem('settings', JSON.stringify(settings));
 		this.setState({settings});
 	}
 
