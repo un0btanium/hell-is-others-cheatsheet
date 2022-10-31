@@ -42,13 +42,20 @@ export default class SVGViewbox extends Component {
 					viewBox="0 0 1190 971"
 					preserveAspectRatio="xMidYMid meet"
 					xmlns="http://www.w3.org/2000/svg"
-					onMouseDown={(e) => console.log((e.clientX-374) + "," + (e.clientY-1))}
+					onMouseDown={this.printCoordinates}
+					id="canvas"
 				>
 					{this.props.children}
 				</svg>
 			</div>
 			
 		);
+	}
+
+	printCoordinates(e) {
+		var canvas = document.getElementById("canvas");
+		var rect = canvas.getBoundingClientRect();
+		console.log(Math.floor(e.clientX - rect.left) + "," + Math.floor(e.clientY - rect.top));
 	}
 
 }

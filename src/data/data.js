@@ -389,11 +389,11 @@ var data = {
 			showNameBelow: true
 		},
 		{
-			x: 285,
-			y: 352
+			x: 406,
+			y: 351
 		},
 		{
-			x: 192,
+			x: 310,
 			y: 313
 		}
 	]
