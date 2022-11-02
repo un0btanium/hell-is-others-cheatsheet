@@ -29,6 +29,9 @@ class App extends Component {
 		let radixTree = new RadixTree();
 		data.npcs.forEach((npc) => {
 			radixTree.addWord(npc.name);
+			if (npc.altName) {
+				radixTree.addWord(npc.altName);
+			}
 			npc.location.address.forEach((address) => {
 				radixTree.addWord(address);
 			});

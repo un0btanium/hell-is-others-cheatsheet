@@ -191,6 +191,22 @@ var data = {
 			  x: 700,
 			  y: 894
 			}
+		},
+		{
+			name: "Lizzie",
+			location: {
+			  address: ["West Humble", "Las Cunas"],
+			  x: 97,
+			  y: 834
+			}
+		},
+		{
+			name: "Autumn",
+			location: {
+			  address: ["Mitleid Park", "Water Fountain"],
+			  x: 454,
+			  y: 667
+			}
 		}
 	],
 	locations: [

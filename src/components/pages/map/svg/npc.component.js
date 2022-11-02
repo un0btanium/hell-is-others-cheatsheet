@@ -22,6 +22,7 @@ export default class NPC extends Component {
 		let offsetX = -(this.props.npc.name.length * 8 / 2);
 		let offsetY = (this.props.npc.showNameBelow) ? 18 : -10;
 
+		// TODO https://stackoverflow.com/questions/15500894/background-color-of-text-in-svg
 		return (
 			<>
 				<text
@@ -46,7 +47,7 @@ export default class NPC extends Component {
 	isHighlighted() {
 		let words = [this.props.npc.name.toLowerCase()]
 		if (this.props.npc.altName) {
-			words.push(this.props.npc.altName);
+			words.push(this.props.npc.altName.toLowerCase());
 		}
 		
 		return words.some(str => this.props.searchResults.includes(str));
