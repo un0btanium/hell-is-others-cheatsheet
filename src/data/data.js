@@ -1,12 +1,12 @@
 var data = {
-	"patchVersion": "1.1.6",
+	patchVersion: "1.1.6",
 	npcs: [
         {
           name: "Cora",
           location: {
             address: ["Al Sadaqa"],
-            x: 305,
-            y: 110
+            x: 308,
+            y: 100
           }
         },
         {
@@ -30,7 +30,7 @@ var data = {
           location: {
             address: ["Al Sadaqa", "Hurray Prospect", "Bank"],
             x: 370,
-            y: 188
+            y: 190
           }
         },
         {
@@ -38,7 +38,7 @@ var data = {
           location: {
             address: ["Al Sadaqa", "Hurray Prospect", "Bank"],
             x: 370,
-            y: 200,
+            y: 202,
           },
 		  showNameBelow: true
         },
@@ -70,8 +70,8 @@ var data = {
           name: "Howard",
           location: {
             address: ["Sword's End"],
-            x: 320,
-            y: 335
+            x: 324,
+            y: 337
           },
 		  showNameBelow: true
         },
@@ -88,8 +88,8 @@ var data = {
 			name: "Deacon",
 			location: {
 			  address: ["Empress Square"],
-			  x: 455,
-			  y: 360
+			  x: 454,
+			  y: 357
 			}
 		},
 		{
@@ -97,7 +97,7 @@ var data = {
 			location: {
 			  address: ["Snake Side"],
 			  x: 584,
-			  y: 338
+			  y: 340
 			}
 		},
 		{
@@ -216,7 +216,9 @@ var data = {
 		},
 		{
 			name: "Saraswati",
-			path: "M 22,26 L 225,26 L 225,223 L 22,223 L 22,26"
+			path: "M 22,26 L 225,26 L 225,223 L 22,223 L 22,26",
+			x: 84,
+			y: 167
 		},
 		{
 			name: "Al Sadaqa",
@@ -268,7 +270,9 @@ var data = {
 		},
 		{
 			name: "Park Mitleid",
-			path: "M 377,549 L 533,549 L 533,746 L 377,746 L 377,546"
+			path: "M 377,549 L 533,549 L 533,746 L 377,746 L 377,546",
+			x: 455,
+			y: 617
 		},
 		{
 			name: "La Cittadella",
@@ -344,73 +348,244 @@ var data = {
 		},
 		{
 			name: "Saraswati Hall",
-			path: "M 125,30 L 191,30 L 191,97 L 125,97 L 125,30"
+			path: "M 125,30 L 191,30 L 191,97 L 125,97 L 125,30",
+			x: 154,
+			y: 63,
+			size: "14px"
 		},
 		{
 			name: "Zavtra River",
-			path: "M 77,230 L 803,230 L 803,302 L 77,302 L 77,230"
+			path: "M 77,230 L 803,230 L 803,302 L 77,302 L 77,230",
+			x: 601,
+			y: 273
 		},
 		{
 			name: "Anavasi Passage",
 			path: "M 445,409 L 471,409 L 471,483 L 445,483 L 445,409"
-		},
+		}
 	],
 	atms: [
 		{
 			x: 775,
-			y: 411,
+			y: 413,
 			showNameBelow: true
 		},
 		{
 			x: 94,
-			y: 743,
+			y: 745,
 			showNameBelow: true
 		},
 		{
 			x: 593,
-			y: 376,
+			y: 378,
 			showNameBelow: true
 		},
 		{
 			x: 373,
-			y: 878,
+			y: 880,
 			showNameBelow: true
 		},
 		{
 			x: 618,
-			y: 922,
+			y: 924,
 			showNameBelow: true
 		},
 		{
 			x: 577,
-			y: 731,
+			y: 733,
 			showNameBelow: true
 		},
 		{
 			x: 71,
-			y: 562
+			y: 564
 		},
 		{
 			x: 106,
-			y: 361
+			y: 363
 		},
 		{
 			x: 267,
-			y: 172,
+			y: 174,
 			showNameBelow: true
 		},
 		{
 			x: 418,
-			y: 95,
+			y: 97,
 			showNameBelow: true
 		},
 		{
 			x: 406,
-			y: 351
+			y: 353
 		},
 		{
 			x: 310,
-			y: 313
+			y: 315
+		}
+	],
+	shops: [
+		{
+			name: "Bank",
+			tags: ["money", "mushrooms", "shrooms", "pills"],
+			x: 399,
+			y: 195
+		},
+		{
+			name: "Fertilizer",
+			tags: ["fertilizer"],
+			x: 381,
+			y: 150
+		},
+		{
+			name: "Fast Food",
+			tags: ["food", "healing"],
+			x: 274,
+			y: 154
+		},
+		{
+			name: "Pottery",
+			tags: ["pots"],
+			x: 308,
+			y: 104
+		},
+		{
+			name: "Carpentry Workshop",
+			tags: [],
+			x: 325,
+			y: 321
+		},
+		{
+			name: "Bar",
+			tags: ["drink", "energizer"],
+			x: 180,
+			y: 356
+		},
+		{
+			name: "Guideshop",
+			tags: [],
+			x: 114,
+			y: 443
+		},
+		{
+			name: "Pharmacy",
+			tags: ["pills"],
+			x: 278,
+			y: 469
+		},
+		{
+			name: "Large Caliber Weapon Shop",
+			tags: ["weapons", "guns"],
+			x: 579,
+			y: 359
+		},
+		{
+			name: "Art Store",
+			tags: ["paintings"],
+			x: 607,
+			y: 476
+		},
+		{
+			name: "Supermarket",
+			tags: ["food", "healing", "health"],
+			x: 729,
+			y: 460
+		},
+		{
+			name: "Infirmary",
+			tags: ["health", "healing", "medkits", "bandages"],
+			x: 259,
+			y: 644
+		},
+		{
+			name: "Hardware",
+			tags: ["explosives", "mines", "grenades"],
+			x: 102,
+			y: 725
+		},
+		{
+			name: "Bakery",
+			tags: ["food", "healing", "health"],
+			x: 397,
+			y: 864
+		},
+		{
+			name: "Small Caliber Weapon Shop",
+			tags: ["guns", "weapons"],
+			x: 612,
+			y: 731
+		},
+		{
+			name: "Furnature",
+			tags: [],
+			x: 620,
+			y: 905
+		},
+		{
+			name: "Church",
+			tags: [],
+			x: 697,
+			y: 846
+		}
+	],
+	elevators: [
+		{
+			x: 180,
+			y: 171
+		},
+		{
+			x: 339,
+			y: 193
+		},
+		{
+			x: 383,
+			y: 57
+		},
+		{
+			x: 105,
+			y: 321
+		},
+		{
+			x: 282,
+			y: 370
+		},
+		{
+			x: 381,
+			y: 355
+		},
+		{
+			x: 296,
+			y: 435
+		},
+		{
+			x: 530,
+			y: 356
+		},
+		{
+			x: 614,
+			y: 376
+		},
+		{
+			x: 578,
+			y: 450
+		},
+		{
+			x: 150,
+			y: 620
+		},
+		{
+			x: 170,
+			y: 709
+		},
+		{
+			x: 302,
+			y: 700
+		},
+		{
+			x: 777,
+			y: 560
+		},
+		{
+			x: 739,
+			y: 734
 		}
 	]
 };

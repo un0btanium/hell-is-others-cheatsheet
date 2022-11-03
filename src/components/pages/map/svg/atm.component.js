@@ -1,11 +1,6 @@
 import React, {Component} from 'react';
 
 export default class ATM extends Component {
-
-	constructor(props) {
-		super(props);
-
-	}
 	
     render () {
 		if (this.props.visibility === 0) {
@@ -20,14 +15,13 @@ export default class ATM extends Component {
 		let color = highlight ? "aqua" : "black";
 		let shadow = highlight ? " shadow" : " shadow-white";
 
-		let offsetX = -14;
 		let offsetY = (this.props.atm.showNameBelow) ? 18 : -10;
 
 		return (
 			<>
-				<text
-					className={'small ' + color + shadow}
-					x={this.props.atm.x+offsetX}
+				<text textAnchor="middle"
+					className={'atm-text ' + color + shadow}
+					x={this.props.atm.x}
 					y={this.props.atm.y+offsetY}
 				>
 					ATM

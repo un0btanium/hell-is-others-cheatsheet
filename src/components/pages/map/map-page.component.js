@@ -7,18 +7,23 @@ import SVGViewbox from './svg/svg-viewbox.component';
 import NPC from './svg/npc.component';
 import Location from './svg/location.component';
 import ATM from './svg/atm.component';
+import Shop from './svg/shop.component';
+import Elevator from './svg/elevator.component';
 
 export default class MapPage extends Component {
 
 	constructor(props) {
 		super(props);
 
-		let defaultSettings = JSON.stringify({
+		let defaultSettings = {
 			showLocations: 2,
 			showNPCs: 1,
-			showATMs: 1
-		});
-		let settings = JSON.parse(localStorage.getItem('settings') || defaultSettings);
+			showATMs: 1,
+			showShops: 1,
+			showElevators: 1
+		};
+		let loadedSettings = JSON.parse(localStorage.getItem('settings') || "{}");
+		let settings = { ...defaultSettings, ...loadedSettings};
 
 		this.state = {
 			searchResults: [],
@@ -57,6 +62,28 @@ export default class MapPage extends Component {
 					searchResults={this.state.searchResults}
 					visibility={this.state.settings.showATMs}
 					key={"atm-" + i}
+				/>
+			)
+		});
+
+		let elevators = this.props.elevators.map((elevator, i) => {
+			return (
+				<Elevator
+					elevator={elevator}
+					searchResults={this.state.searchResults}
+					visibility={this.state.settings.showElevators}
+					key={"elevator-" + i}
+				/>
+			)
+		});
+
+		let shops = this.props.shops.map((shop, i) => {
+			return (
+				<Shop
+					shop={shop}
+					searchResults={this.state.searchResults}
+					visibility={this.state.settings.showShops}
+					key={"shop-" + i}
 				/>
 			)
 		});
@@ -107,7 +134,7 @@ export default class MapPage extends Component {
 								</ToggleButton>
 							</ToggleButtonGroup>
 							<ToggleButtonGroup
-								style={{ width: "100%" }}
+								style={{ width: "100%", marginBottom: "5px" }}
 								type="radio"
 								name="location-visibility"
 								defaultValue={this.state.settings.showLocations}
@@ -123,12 +150,48 @@ export default class MapPage extends Component {
 									Never
 								</ToggleButton>
 							</ToggleButtonGroup>
+							<ToggleButtonGroup
+								style={{ width: "100%", marginBottom: "5px" }}
+								type="radio"
+								name="elevator-visibility"
+								defaultValue={this.state.settings.showElevators}
+								onChange={(value) => this.onChangeSettings("showElevators", value)}
+							>
+								<ToggleButton variant="secondary" id="elevator-1" value={1}>
+									Always
+								</ToggleButton>
+								<ToggleButton variant="secondary" id="elevator-2" value={2}>
+									On Search
+								</ToggleButton>
+								<ToggleButton variant="secondary" id="elevator-0" value={0}>
+									Never
+								</ToggleButton>
+							</ToggleButtonGroup>
+							<ToggleButtonGroup
+								style={{ width: "100%" }}
+								type="radio"
+								name="shops-visibility"
+								defaultValue={this.state.settings.showShops}
+								onChange={(value) => this.onChangeSettings("showShops", value)}
+							>
+								<ToggleButton variant="secondary" id="shop-1" value={1}>
+									Always
+								</ToggleButton>
+								<ToggleButton variant="secondary" id="shop-2" value={2}>
+									On Search
+								</ToggleButton>
+								<ToggleButton variant="secondary" id="shop-0" value={0}>
+									Never
+								</ToggleButton>
+							</ToggleButtonGroup>
 						</Col>
 						<Col md="9" style={{ textAlign:"center" }}>
 							<SVGViewbox>
-								{npcs}
 								{locations}
+								{elevators}
+								{shops}
 								{atms}
+								{npcs}
 							</SVGViewbox>
 						</Col>
 					</Row>
@@ -150,7 +213,8 @@ export default class MapPage extends Component {
 	onSearchFieldChange(e) {
 		if(e.target.value === '') {
 			this.setState({
-				searchResults: []
+				searchResults: [],
+				placeholder: this.getPlaceholder()
 			});
 			return;
 		}

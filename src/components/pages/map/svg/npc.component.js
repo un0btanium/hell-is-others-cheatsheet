@@ -1,11 +1,6 @@
 import React, {Component} from 'react';
 
 export default class NPC extends Component {
-
-	constructor(props) {
-		super(props);
-
-	}
 	
     render () {
 		if (this.props.visibility === 0) {
@@ -19,15 +14,14 @@ export default class NPC extends Component {
 
 		let color = highlight ? "lawngreen" : "black";
 		let shadow = highlight ? " shadow" : " shadow-white";
-		let offsetX = -(this.props.npc.name.length * 8 / 2);
 		let offsetY = (this.props.npc.showNameBelow) ? 18 : -10;
 
 		// TODO https://stackoverflow.com/questions/15500894/background-color-of-text-in-svg
 		return (
 			<>
-				<text
-					className={'small ' + color + shadow}
-					x={this.props.npc.location.x+offsetX}
+				<text textAnchor="middle"
+					className={'npc-text ' + color + shadow}
+					x={this.props.npc.location.x}
 					y={this.props.npc.location.y+offsetY}
 				>
 					{this.props.npc.name}

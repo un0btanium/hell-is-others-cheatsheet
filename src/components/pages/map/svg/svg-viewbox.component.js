@@ -1,7 +1,5 @@
 import React, {Component} from 'react';
 
-import useWindowDimensions from './../../../../hooks/useWindowDimensions';
-
 export default class SVGViewbox extends Component {
 	
 
@@ -39,7 +37,7 @@ export default class SVGViewbox extends Component {
 				<svg
 					style={{background: "url('./map-en.png')", backgroundSize: "auto" }}
 					width="100%"
-					viewBox="0 0 1190 971"
+					viewBox="0 0 1190 969"
 					preserveAspectRatio="xMidYMid meet"
 					xmlns="http://www.w3.org/2000/svg"
 					onMouseDown={this.printCoordinates}
@@ -55,7 +53,7 @@ export default class SVGViewbox extends Component {
 	printCoordinates(e) {
 		var canvas = document.getElementById("canvas");
 		var rect = canvas.getBoundingClientRect();
-		console.log(Math.floor(e.clientX - rect.left) + "," + Math.floor(e.clientY - rect.top));
+		console.log("x: " + Math.floor(e.clientX - rect.left) + ",\n			y: " + Math.floor(e.clientY - rect.top));
 	}
 
 }
