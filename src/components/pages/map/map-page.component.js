@@ -19,8 +19,8 @@ export default class MapPage extends Component {
 			showLocations: 2,
 			showNPCs: 1,
 			showATMs: 1,
-			showShops: 1,
-			showElevators: 1
+			showShops: 2,
+			showElevators: 2
 		};
 		let loadedSettings = JSON.parse(localStorage.getItem('settings') || "{}");
 		let settings = { ...defaultSettings, ...loadedSettings};
