@@ -16,16 +16,19 @@ export default class Elevator extends Component {
 
 		return (
 			<image
+				className="pointer"
 				href="elevator.png"
 				x={this.props.elevator.x - offset}
 				y={this.props.elevator.y - offset}
 				alt="elevator"
+				onClick={() => this.props.addBookmark("elevator")}
+				onContextMenu={(e) => { e.preventDefault(); this.props.deleteBookmark("elevator") }}
 			/>
 		);
 	}
 
 	isHighlighted() {
-		return ["elevator", "door", "exit"].some((word) => this.props.searchResults.includes(word));
+		return this.props.searchResults.includes("elevator");
 	}
 
 }

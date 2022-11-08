@@ -20,19 +20,23 @@ export default class ATM extends Component {
 		return (
 			<>
 				<text textAnchor="middle"
-					className={'atm-text ' + color + shadow}
+					className={'atm-text pointer ' + color + shadow}
 					x={this.props.atm.x}
 					y={this.props.atm.y+offsetY}
+					onClick={() => this.props.addBookmark("atm")}
+					onContextMenu={(e) => { e.preventDefault(); this.props.deleteBookmark("atm") }}
 				>
 					ATM
 				</text>
 				<ellipse
-					// onMouseEnter={}
+					className="pointer"
 					fill={color}
 					cx={this.props.atm.x}
 					cy={this.props.atm.y}
 					rx={4}
 					ry={4}
+					onClick={() => this.props.addBookmark("atm")}
+					onContextMenu={(e) => { e.preventDefault(); this.props.deleteBookmark("atm") }}
 				/>
 			</>
 		);

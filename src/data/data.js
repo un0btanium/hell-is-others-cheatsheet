@@ -509,7 +509,7 @@ var data = {
 		},
 		{
 			name: "Small Caliber Weapon Shop",
-			tags: ["guns", "weapons"],
+			tags: ["guns", "weapons", "pistol"],
 			x: 612,
 			y: 731
 		},

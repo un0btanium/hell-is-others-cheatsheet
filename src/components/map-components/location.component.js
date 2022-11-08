@@ -1,7 +1,5 @@
 import React, {Component} from 'react';
 
-
-
 export default class Location extends Component {
 
     render () {
@@ -17,11 +15,13 @@ export default class Location extends Component {
 		return (
 			<>
 				<path 
-					className="shadow"
+					className="shadow pointer"
 					d={this.props.location.path}
 					fill="transparent"
 					stroke="orange"
 					strokeWidth="3"
+					onClick={() => this.props.addBookmark(this.props.location.name)}
+					onContextMenu={(e) => { e.preventDefault(); this.props.deleteBookmark(this.props.location.name) }}
 				/>
 				{/* <text
 					className={"location-text orange shadow" + (this.props.location.vertical ? " text-vertical" : "")}
@@ -38,5 +38,6 @@ export default class Location extends Component {
 	
 	isHighlighted() {
 		return this.props.searchResults.includes(this.props.location.name.toLowerCase())
+			|| (this.props.location.tags && this.props.location.tags.some((tag) => this.props.searchResults.includes(tag))); 
 	}
 }
