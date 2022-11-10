@@ -1,16 +1,16 @@
 {
   "files": {
     "main.css": "/hell-is-others-cheatsheet/static/css/main.e23f52d4.css",
-    "main.js": "/hell-is-others-cheatsheet/static/js/main.637c048c.js",
+    "main.js": "/hell-is-others-cheatsheet/static/js/main.3c6a335d.js",
     "static/js/787.a791de49.chunk.js": "/hell-is-others-cheatsheet/static/js/787.a791de49.chunk.js",
     "static/media/hiologo.png": "/hell-is-others-cheatsheet/static/media/hiologo.145984368306218fae37.png",
     "index.html": "/hell-is-others-cheatsheet/index.html",
     "main.e23f52d4.css.map": "/hell-is-others-cheatsheet/static/css/main.e23f52d4.css.map",
-    "main.637c048c.js.map": "/hell-is-others-cheatsheet/static/js/main.637c048c.js.map",
+    "main.3c6a335d.js.map": "/hell-is-others-cheatsheet/static/js/main.3c6a335d.js.map",
     "787.a791de49.chunk.js.map": "/hell-is-others-cheatsheet/static/js/787.a791de49.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.e23f52d4.css",
-    "static/js/main.637c048c.js"
+    "static/js/main.3c6a335d.js"
   ]
 }
