@@ -21,13 +21,14 @@ export default class Shop extends Component {
 				onContextMenu={(e) => { e.preventDefault(); this.props.deleteBookmarks(this.props.shop.name) }}
 			>
 				<image
+					className={highlight ? "invert-colors" : ""}
 					href="./icons/icon.png"
 					x={this.props.shop.x - offset}	
 					y={this.props.shop.y - offset}
 					alt="shop-background"
 				/>
 				<image
-					className="invert-colors"
+					className={highlight ? "" : "invert-colors"}
 					href={this.props.shop.img}
 					x={this.props.shop.x - offset + 6}
 					y={this.props.shop.y - offset + 6}

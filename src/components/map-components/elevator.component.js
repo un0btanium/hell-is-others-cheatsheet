@@ -21,13 +21,14 @@ export default class Elevator extends Component {
 				onContextMenu={(e) => { e.preventDefault(); this.props.deleteBookmarks("elevator") }}
 			>
 				<image
+					className={highlight ? "invert-colors" : ""}
 					href="./icons/icon.png"
 					x={this.props.elevator.x - offset}	
 					y={this.props.elevator.y - offset}
 					alt="elevator-background"
 				/>
 				<image
-					className="invert-colors"
+					className={highlight ? "" : "invert-colors"}
 					href={"./icons/Icon_Elevator.png"}
 					x={this.props.elevator.x - offset + 7}
 					y={this.props.elevator.y - offset + 5}
