@@ -39,7 +39,7 @@ class App extends Component {
 			settings: this.getInitialSettings(),
 			placeholder: this.getPlaceholder(data),
 			searchResults: [],
-			bookmarkNames: bookmarks.map(bookmark => bookmark.name),
+			bookmarkNames: this.getEnabledBookmarks(bookmarks),
 			bookmarks: bookmarks
 		};
 	}
@@ -104,6 +104,10 @@ class App extends Component {
 			return "Elevators";
 		}
 		return "ATM";
+	}
+
+	getEnabledBookmarks(bookmarks) {
+		return bookmarks.filter(bookmark => !bookmark.disabled).map(bookmark => bookmark.name);
 	}
 	
 	render() {
@@ -173,7 +177,7 @@ class App extends Component {
 			this.setState({
 				searchResults: [],
 				placeholder: this.getPlaceholder(this.state),
-				bookmarkNames: this.state.bookmarks.map(bookmark => bookmark.name)
+				bookmarkNames: this.getEnabledBookmarks(this.state.bookmarks)
 			});
 			return;
 		}
@@ -181,7 +185,7 @@ class App extends Component {
 		this.state.radixTree.getWords(text).then((searchResults) => {
 			this.setState({
 				searchResults: searchResults,
-				bookmarkNames: this.state.bookmarks.map(bookmark => bookmark.name)
+				bookmarkNames: this.getEnabledBookmarks(this.state.bookmarks)
 			});
 		});
 	}
@@ -222,7 +226,7 @@ class App extends Component {
 		this.setState({
 			searchResults: [],
 			bookmarks: bookmarks.sort((a,b) => a.name.localeCompare(b.name)),
-			bookmarkNames: bookmarks.map(bookmark => bookmark.name),
+			bookmarkNames: this.getEnabledBookmarks(bookmarks),
 			placeholder: this.getPlaceholder(this.state)
 		});
 	}
@@ -268,7 +272,7 @@ class App extends Component {
 		
 		this.setState({
 			bookmarks: bookmarks.sort((a,b) => a.name.localeCompare(b.name)),
-			bookmarkNames: bookmarks.map(bookmark => bookmark.name)
+			bookmarkNames: this.getEnabledBookmarks(bookmarks)
 		});
 	}
 	
@@ -298,7 +302,7 @@ class App extends Component {
 
 		this.setState({
 			bookmarks: bookmarks,
-			bookmarkNames: bookmarks.map(bookmark => bookmark.name)
+			bookmarkNames: this.getEnabledBookmarks(bookmarks)
 		});
 	}
 
@@ -340,7 +344,7 @@ class App extends Component {
 
 		this.setState({
 			bookmarks: bookmarks.sort((a,b) => a.name.localeCompare(b.name)),
-			bookmarkNames: bookmarks.map(bookmark => bookmark.name)
+			bookmarkNames: this.getEnabledBookmarks(bookmarks)
 		});
 	}
 
@@ -361,7 +365,7 @@ class App extends Component {
 
 		this.setState({
 			bookmarks: bookmarks,
-			bookmarkNames: bookmarks.map(bookmark => bookmark.name)
+			bookmarkNames: this.getEnabledBookmarks(bookmarks)
 		});
 	}
 }
