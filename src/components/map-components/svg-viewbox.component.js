@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 
 export default class SVGViewbox extends Component {
 	
-
 	constructor(props) {
 		super(props);
 		
@@ -53,7 +52,7 @@ export default class SVGViewbox extends Component {
 	printCoordinates(e) {
 		var canvas = document.getElementById("canvas");
 		var rect = canvas.getBoundingClientRect();
-		console.log("x: " + Math.floor(e.clientX - rect.left) + ",\n			y: " + Math.floor(e.clientY - rect.top));
+		console.log(Math.floor(e.clientX - rect.left) + "," + Math.floor(e.clientY - rect.top));
 	}
 
 }

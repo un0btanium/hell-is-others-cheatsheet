@@ -23,8 +23,8 @@ export default class ATM extends Component {
 					className={'atm-text pointer ' + color + shadow}
 					x={this.props.atm.x}
 					y={this.props.atm.y+offsetY}
-					onClick={() => this.props.addBookmark("atm")}
-					onContextMenu={(e) => { e.preventDefault(); this.props.deleteBookmark("atm") }}
+					onClick={() => this.props.addBookmarks("atm")}
+					onContextMenu={(e) => { e.preventDefault(); this.props.deleteBookmarks("atm") }}
 				>
 					ATM
 				</text>
@@ -35,8 +35,8 @@ export default class ATM extends Component {
 					cy={this.props.atm.y}
 					rx={4}
 					ry={4}
-					onClick={() => this.props.addBookmark("atm")}
-					onContextMenu={(e) => { e.preventDefault(); this.props.deleteBookmark("atm") }}
+					onClick={() => this.props.addBookmarks("atm")}
+					onContextMenu={(e) => { e.preventDefault(); this.props.deleteBookmarks("atm") }}
 				/>
 			</>
 		);

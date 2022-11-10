@@ -22,8 +22,8 @@ export default class Shop extends Component {
 					x={this.props.shop.x - offset}
 					y={this.props.shop.y - offset}
 					alt="shop"
-					onClick={() => this.props.addBookmark(this.props.shop.name)}
-					onContextMenu={(e) => { e.preventDefault(); this.props.deleteBookmark(this.props.shop.name) }}
+					onClick={() => this.props.addBookmarks(this.props.shop.name)}
+					onContextMenu={(e) => { e.preventDefault(); this.props.deleteBookmarks(this.props.shop.name) }}
 				/>
 			</>
 		);

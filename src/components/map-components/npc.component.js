@@ -23,8 +23,8 @@ export default class NPC extends Component {
 					className={'npc-text pointer ' + color + shadow}
 					x={this.props.npc.location.x}
 					y={this.props.npc.location.y+offsetY}
-					onClick={() => this.props.addBookmark(this.props.npc.name)}
-					onContextMenu={(e) => { e.preventDefault(); this.props.deleteBookmark(this.props.npc.name) }}
+					onClick={() => this.props.addBookmarks(this.props.npc.name)}
+					onContextMenu={(e) => { e.preventDefault(); this.props.deleteBookmarks(this.props.npc.name) }}
 				>
 					{this.props.npc.name}
 				</text>
@@ -35,8 +35,8 @@ export default class NPC extends Component {
 					cy={this.props.npc.location.y}
 					rx={4}
 					ry={4}
-					onClick={() => this.props.addBookmark(this.props.npc.name)}
-					onContextMenu={(e) => { e.preventDefault(); this.props.deleteBookmark(this.props.npc.name) }}
+					onClick={() => this.props.addBookmarks(this.props.npc.name)}
+					onContextMenu={(e) => { e.preventDefault(); this.props.deleteBookmarks(this.props.npc.name) }}
 				/>
 			</>
 		);

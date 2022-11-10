@@ -4,7 +4,6 @@ import { ToggleButton, ToggleButtonGroup } from 'react-bootstrap';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrashCan, faCheckSquare, faSquare } from '@fortawesome/free-regular-svg-icons'
-import { faCheck } from '@fortawesome/free-solid-svg-icons';
 
 export default class SideBar extends Component {
 
@@ -35,7 +34,7 @@ export default class SideBar extends Component {
 					<FontAwesomeIcon
 						style={{marginRight: "5px"}}
 						icon={faTrashCan}
-						onClick={() => this.props.deleteBookmark(bookmark.name)}
+						onClick={() => this.props.deleteBookmarks(bookmark.name)}
 					/>
 					{
 						bookmark.disabled
@@ -43,19 +42,19 @@ export default class SideBar extends Component {
 						<FontAwesomeIcon
 							style={{marginRight: "5px"}}
 							icon={faCheckSquare}
-							onClick={() => this.props.switchBookmark(bookmark.name)}
+							onClick={() => this.props.switchBookmarks(bookmark.name)}
 						/>
 						: 
 						<FontAwesomeIcon
 							style={{marginRight: "5px"}}
 							icon={faSquare}
-							onClick={() => this.props.switchBookmark(bookmark.name)}
+							onClick={() => this.props.switchBookmarks(bookmark.name)}
 						/>
 					}
 					<div
 						style={{display: "inline-block"}}
-						onClick={() => this.props.switchBookmark(bookmark.name)}
-						onContextMenu={(e) => { e.preventDefault(); this.props.deleteBookmark(bookmark.name) }}
+						onClick={() => this.props.switchBookmarks(bookmark.name)}
+						onContextMenu={(e) => { e.preventDefault(); this.props.deleteBookmarks(bookmark.name) }}
 					>
 						{bookmark.name}
 					</div>
@@ -193,12 +192,12 @@ export default class SideBar extends Component {
 						<FontAwesomeIcon
 							style={{marginRight: "5px"}}
 							icon={faTrashCan}
-							onClick={() => this.props.deleteAllBookmarks()}
+							onClick={() => this.props.deleteBookmarks()}
 						/>
 						<FontAwesomeIcon
 							style={{marginRight: "5px"}}
 							icon={faCheckSquare}
-							onClick={() => this.props.switchAllBookmarks()}
+							onClick={() => this.props.switchBookmarks()}
 						/>
 						Bookmarks
 					</div>

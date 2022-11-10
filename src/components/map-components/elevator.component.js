@@ -21,8 +21,8 @@ export default class Elevator extends Component {
 				x={this.props.elevator.x - offset}
 				y={this.props.elevator.y - offset}
 				alt="elevator"
-				onClick={() => this.props.addBookmark("elevator")}
-				onContextMenu={(e) => { e.preventDefault(); this.props.deleteBookmark("elevator") }}
+				onClick={() => this.props.addBookmarks("elevator")}
+				onContextMenu={(e) => { e.preventDefault(); this.props.deleteBookmarks("elevator") }}
 			/>
 		);
 	}

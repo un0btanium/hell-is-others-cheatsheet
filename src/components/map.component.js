@@ -10,28 +10,28 @@ import Elevator from './map-components/elevator.component';
 export default class Map extends Component {
 
 	render () {
-		let npcs = this.props.npcs.map(npc => {
+		let npcs = this.props.npcs.map((npc, i) => {
 			return (
 				<NPC
 					npc={npc}
 					searchResults={this.props.searchResults}
 					visibility={this.props.settings.showNPCs}
-					addBookmark={this.props.addBookmark}
-					deleteBookmark={this.props.deleteBookmark}
-					key={"npc-" + npc.name}
+					addBookmarks={this.props.addBookmarks}
+					deleteBookmarks={this.props.deleteBookmarks}
+					key={"npc-" + i}
 				/>
 			);
 		});
 		
-		let locations = this.props.locations.map(location => {
+		let locations = this.props.locations.map((location, i) => {
 			return (
 				<Location
 					location={location}
 					searchResults={this.props.searchResults}
 					visibility={this.props.settings.showLocations}
-					addBookmark={this.props.addBookmark}
-					deleteBookmark={this.props.deleteBookmark}
-					key={"location-" + location.name}
+					addBookmarks={this.props.addBookmarks}
+					deleteBookmarks={this.props.deleteBookmarks}
+					key={"location-" + i}
 				/>
 			);
 		});
@@ -42,8 +42,8 @@ export default class Map extends Component {
 					atm={atm}
 					searchResults={this.props.searchResults}
 					visibility={this.props.settings.showATMs}
-					addBookmark={this.props.addBookmark}
-					deleteBookmark={this.props.deleteBookmark}
+					addBookmarks={this.props.addBookmarks}
+					deleteBookmarks={this.props.deleteBookmarks}
 					key={"atm-" + i}
 				/>
 			)
@@ -55,8 +55,8 @@ export default class Map extends Component {
 					elevator={elevator}
 					searchResults={this.props.searchResults}
 					visibility={this.props.settings.showElevators}
-					addBookmark={this.props.addBookmark}
-					deleteBookmark={this.props.deleteBookmark}
+					addBookmarks={this.props.addBookmarks}
+					deleteBookmarks={this.props.deleteBookmarks}
 					key={"elevator-" + i}
 				/>
 			)
@@ -68,8 +68,8 @@ export default class Map extends Component {
 					shop={shop}
 					searchResults={this.props.searchResults}
 					visibility={this.props.settings.showShops}
-					addBookmark={this.props.addBookmark}
-					deleteBookmark={this.props.deleteBookmark}
+					addBookmarks={this.props.addBookmarks}
+					deleteBookmarks={this.props.deleteBookmarks}
 					key={"shop-" + i}
 				/>
 			)

@@ -27,12 +27,9 @@ class App extends Component {
 
 		this.onSearchFieldChange = this.onSearchFieldChange.bind(this);
 		this.onChangeSettings = this.onChangeSettings.bind(this);
-		this.addBookmark = this.addBookmark.bind(this);
 		this.addBookmarks = this.addBookmarks.bind(this);
-		this.deleteBookmark = this.deleteBookmark.bind(this);
-		this.deleteAllBookmarks = this.deleteAllBookmarks.bind(this);
-		this.switchBookmark = this.switchBookmark.bind(this);
-		this.switchAllBookmarks = this.switchAllBookmarks.bind(this);
+		this.deleteBookmarks = this.deleteBookmarks.bind(this);
+		this.switchBookmarks = this.switchBookmarks.bind(this);
 
 		let bookmarks = this.getInitialBookmarks();
 
@@ -42,7 +39,7 @@ class App extends Component {
 			settings: this.getInitialSettings(),
 			placeholder: this.getPlaceholder(data),
 			searchResults: [],
-			searchResultPlusBookmarks: this.getSearchResultsPlusBookmarks(bookmarks, []),
+			bookmarkNames: bookmarks.map(bookmark => bookmark.name),
 			bookmarks: bookmarks
 		};
 	}
@@ -55,20 +52,21 @@ class App extends Component {
 			if (npc.altName) {
 				radixTree.addWord(npc.altName);
 			}
-			npc.location.address.forEach((address) => {
-				radixTree.addWord(address);
-			});
+			npc.location.address.forEach(address => radixTree.addWord(address));
 		});
 
 		data.locations.forEach(location => {
-			radixTree.addWord(location.name);
+			if (location.name) {
+				radixTree.addWord(location.name);
+			}
+			if (location.tags) {
+				location.tags.forEach(tag => radixTree.addWord(tag));
+			}
 		});
 
 		data.shops.forEach(shop => {
 			radixTree.addWord(shop.name);
-			shop.tags.forEach(tag => {
-				radixTree.addWord(tag);
-			});
+			shop.tags.forEach(tag => radixTree.addWord(tag));
 		});
 
 		radixTree.addWord("atm");
@@ -108,22 +106,6 @@ class App extends Component {
 		return "ATM";
 	}
 	
-	getSearchResultsPlusBookmarks(bookmarks, searchResults) {
-		let searchResultPlusBookmarks = [...searchResults];
-		bookmarks.forEach(bookmark => {
-			if (bookmark.disabled) {
-				return;
-			}
-
-			if (searchResultPlusBookmarks.includes(bookmark.name)) {
-				return;
-			}
-
-			searchResultPlusBookmarks.push(bookmark.name);
-		});
-		return searchResultPlusBookmarks;
-	}
-	
 	render() {
 		return (
 			<Container style={{ padding:"0", margin:"0"}}>
@@ -159,10 +141,8 @@ class App extends Component {
 										onSearchFieldChange={this.onSearchFieldChange}
 										onChangeSettings={this.onChangeSettings}
 										addBookmarks={this.addBookmarks}
-										deleteBookmark={this.deleteBookmark}
-										deleteAllBookmarks={this.deleteAllBookmarks}
-										switchBookmark={this.switchBookmark}
-										switchAllBookmarks={this.switchAllBookmarks}
+										deleteBookmarks={this.deleteBookmarks}
+										switchBookmarks={this.switchBookmarks}
 									/>}
 								/>
 								<Route path="/hell-is-others-cheatsheet/about" element={<About />} />
@@ -173,14 +153,14 @@ class App extends Component {
 					<Col sm="12" md="7" style={{ padding: "0" }}>
 						<Map
 							settings={this.state.settings}
-							searchResults={this.state.searchResultPlusBookmarks}
+							searchResults={this.state.searchResults.length > 0 ? this.state.searchResults : this.state.bookmarkNames}
 							npcs={this.state.npcs}
 							atms={this.state.atms}
 							locations={this.state.locations}
 							elevators={this.state.elevators}
 							shops={this.state.shops}
-							addBookmark={this.addBookmark}
-							deleteBookmark={this.deleteBookmark}
+							addBookmarks={this.addBookmarks}
+							deleteBookmarks={this.deleteBookmarks}
 						/>
 					</Col>
 				</Row>
@@ -193,7 +173,7 @@ class App extends Component {
 			this.setState({
 				searchResults: [],
 				placeholder: this.getPlaceholder(this.state),
-				searchResultPlusBookmarks: this.getSearchResultsPlusBookmarks(this.state.bookmarks, [])
+				bookmarkNames: this.state.bookmarks.map(bookmark => bookmark.name)
 			});
 			return;
 		}
@@ -201,7 +181,7 @@ class App extends Component {
 		this.state.radixTree.getWords(text).then((searchResults) => {
 			this.setState({
 				searchResults: searchResults,
-				searchResultPlusBookmarks: this.getSearchResultsPlusBookmarks(this.state.bookmarks, searchResults)
+				bookmarkNames: this.state.bookmarks.map(bookmark => bookmark.name)
 			});
 		});
 	}
@@ -215,29 +195,17 @@ class App extends Component {
 		this.setState({settings});
 	}
 
-	addBookmark(word) {
-		word = word.toLowerCase();
-		let bookmarks = [...this.state.bookmarks];
-		for (let bookmark of bookmarks) {
-			if (bookmark.name === word) {
-				this.switchBookmark(word);
-				return;
-			}
+	addBookmarks(arg) {
+		if (!arg) {
+			this.addSearchResultsToBookmarks();
+		} else if (arg.constructor.name === 'String') {
+			this.addMultipleBookmarks([arg]);
+		} else if (arg.constructor.name === 'Array') {
+			this.addMultipleBookmarks(arg);
 		}
-
-		bookmarks.push({
-			name: word
-		});
-
-		localStorage.setItem('bookmarks', JSON.stringify(bookmarks));
-		
-		this.setState({
-			bookmarks: bookmarks.sort((a,b) => a.name.localeCompare(b.name)),
-			searchResultPlusBookmarks: this.getSearchResultsPlusBookmarks(bookmarks, this.state.searchResults)
-		});
 	}
 
-	addBookmarks() {
+	addSearchResultsToBookmarks() {
 		let bookmarks = this.state.searchResults.map((word) => ({ name: word })); // re-enables existing disabled bookmarks
 
 		this.state.bookmarks.forEach((existingBookmark) => { // add remaining existing bookmarks
@@ -254,45 +222,125 @@ class App extends Component {
 		this.setState({
 			searchResults: [],
 			bookmarks: bookmarks.sort((a,b) => a.name.localeCompare(b.name)),
-			searchResultPlusBookmarks: this.getSearchResultsPlusBookmarks(bookmarks, []),
+			bookmarkNames: bookmarks.map(bookmark => bookmark.name),
 			placeholder: this.getPlaceholder(this.state)
 		});
 	}
 
-	deleteBookmark(name) {
-		name = name.toLowerCase();
-		let bookmarks = this.state.bookmarks.filter(bookmark => bookmark.name !== name);
+	addMultipleBookmarks(words) {
+		words = words.map(word => word.toLowerCase());
+		let bookmarks = [...this.state.bookmarks];
+		let bookmarksThatNeedSwitching = [];
+		for (let word of words) {
+			let alreadyBookmarked = false;
+			for (let bookmark of bookmarks) {
+				if (bookmark.name === word) {
+					bookmarksThatNeedSwitching.push(bookmark);
+					alreadyBookmarked = true;
+					break;
+				}
+			}
+			if (!alreadyBookmarked) {
+				bookmarks.push({
+					name: word
+				});
+			}
+		}
+
+		if (bookmarksThatNeedSwitching.length > 0) {
+			console.log(bookmarksThatNeedSwitching)
+			let hasDisabled = bookmarksThatNeedSwitching.some(bookmark => bookmark.disabled);
+			let hasEnabled = bookmarksThatNeedSwitching.some(bookmark => !bookmark.disabled);
+			let allEnabled = !hasDisabled && hasEnabled;
+
+			bookmarks = bookmarks.map(bookmark => {
+				if (bookmarksThatNeedSwitching.some(b => bookmark.name === b.name)) {
+					bookmark = {
+						name: bookmark.name,
+						disabled: allEnabled
+					}
+				}
+				return bookmark;
+			});
+		}
+
 		localStorage.setItem('bookmarks', JSON.stringify(bookmarks));
+		
 		this.setState({
-			bookmarks: bookmarks,
-			searchResultPlusBookmarks: this.getSearchResultsPlusBookmarks(bookmarks, this.state.searchResults)
+			bookmarks: bookmarks.sort((a,b) => a.name.localeCompare(b.name)),
+			bookmarkNames: bookmarks.map(bookmark => bookmark.name)
 		});
+	}
+	
+	deleteBookmarks(arg) {
+		if (!arg) {
+			this.deleteAllBookmarks();
+		} else if (arg.constructor.name === 'String') {
+			this.deleteMultipleBookmarks([arg]);
+		} else if (arg.constructor.name === 'Array') {
+			this.deleteMultipleBookmarks(arg);
+		}
 	}
 
 	deleteAllBookmarks() {
 		localStorage.setItem('bookmarks', JSON.stringify([]));
 		this.setState({
 			bookmarks: [],
-			searchResultPlusBookmarks: this.getSearchResultsPlusBookmarks([], this.state.searchResults)
+			bookmarkNames: []
 		});
 	}
 
-	switchBookmark(name) {
-		let bookmarks = this.state.bookmarks.map(bookmark => {
-			if (bookmark.name === name) {
-				bookmark = {
-					name: name,
-					disabled: !bookmark.disabled
-				}
-			}
-			return bookmark;
-		});
+	deleteMultipleBookmarks(words) {
+		words = words.map(word => word.toLowerCase());
+		let bookmarks = this.state.bookmarks.filter(bookmark => !words.some(word => bookmark.name === word));
 
 		localStorage.setItem('bookmarks', JSON.stringify(bookmarks));
 
 		this.setState({
 			bookmarks: bookmarks,
-			searchResultPlusBookmarks: this.getSearchResultsPlusBookmarks(bookmarks, this.state.searchResults)
+			bookmarkNames: bookmarks.map(bookmark => bookmark.name)
+		});
+	}
+
+	switchBookmarks(arg) {
+		if (!arg) {
+			this.switchAllBookmarks();
+		} else if (arg.constructor.name === 'String') {
+			this.switchMultipleBookmarks([arg]);
+		} else if (arg.constructor.name === 'Array') {
+			this.switchMultipleBookmarks(arg);
+		}
+	}
+	
+	switchMultipleBookmarks(words) {
+		words = words.map(word => word.toLowerCase());
+
+		let bookmarksToSwitch = [];
+		let bookmarksNotToSwitch = [];
+		this.state.bookmarks.forEach(bookmark => {
+			if (words.some(word => bookmark.name === word)) {
+				bookmarksToSwitch.push(bookmark);
+			} else {
+				bookmarksNotToSwitch.push(bookmark);
+			}
+		});
+
+		let hasDisabled = bookmarksToSwitch.some(bookmark => bookmark.disabled);
+		let hasEnabled = bookmarksToSwitch.some(bookmark => !bookmark.disabled);
+		let allEnabled = !hasDisabled && hasEnabled;
+
+		let bookmarks = [...bookmarksNotToSwitch, ...bookmarksToSwitch.map(bookmark => {
+			return {
+				name: bookmark.name,
+				disabled: allEnabled
+			}
+		})];
+
+		localStorage.setItem('bookmarks', JSON.stringify(bookmarks));
+
+		this.setState({
+			bookmarks: bookmarks.sort((a,b) => a.name.localeCompare(b.name)),
+			bookmarkNames: bookmarks.map(bookmark => bookmark.name)
 		});
 	}
 
@@ -313,7 +361,7 @@ class App extends Component {
 
 		this.setState({
 			bookmarks: bookmarks,
-			searchResultPlusBookmarks: this.getSearchResultsPlusBookmarks(bookmarks, this.state.searchResults)
+			bookmarkNames: bookmarks.map(bookmark => bookmark.name)
 		});
 	}
 }

@@ -216,9 +216,7 @@ var data = {
 		},
 		{
 			name: "Saraswati",
-			path: "M 22,26 L 225,26 L 225,223 L 22,223 L 22,26",
-			x: 84,
-			y: 167
+			path: "M 22,26 L 225,26 L 225,223 L 22,223 L 22,26"
 		},
 		{
 			name: "Al Sadaqa",
@@ -226,7 +224,8 @@ var data = {
 		},
 		{
 			name: "Jardin De La Paix",
-			path: "M 493,2 L 805,2 L 805,225 L 493,225 L 493,2"
+			path: "M 493,2 L 805,2 L 805,225 L 493,225 L 493,2",
+			tags: ["bullets", "shrooms", "mushrooms"]
 		},
 		{
 			name: "Hurray Prospect",
@@ -238,7 +237,8 @@ var data = {
 		},
 		{
 			name: "Chateau Constant",
-			path: "M 669,67 L 771,67 L 771,205 L 669,205 L 669,67"
+			path: "M 669,67 L 771,67 L 771,205 L 669,205 L 669,67",
+			tags: ["gold"]
 		},
 		{
 			name: "Lättnad Bridge",
@@ -250,7 +250,8 @@ var data = {
 		},
 		{
 			name: "Garden of Simples",
-			path: "M 133,405 L 218,405 L 218,485 L 133,485 L 133,405"
+			path: "M 133,405 L 218,405 L 218,485 L 133,485 L 133,405",
+			tags: ["bullets", "shrooms", "mushrooms"]
 		},
 		{
 			name: "Sword's End",
@@ -271,8 +272,7 @@ var data = {
 		{
 			name: "Park Mitleid",
 			path: "M 377,549 L 533,549 L 533,746 L 377,746 L 377,546",
-			x: 455,
-			y: 617
+			tags: ["bullets", "shrooms", "mushrooms"]
 		},
 		{
 			name: "La Cittadella",
@@ -280,7 +280,8 @@ var data = {
 		},
 		{
 			name: "Hope Century Hospital",
-			path: "M 210,547 L 313,547 L 313,676 L 210,676 L 210,547"
+			path: "M 210,547 L 313,547 L 313,676 L 210,676 L 210,547",
+			tags: ["blood", "pills", "medkits", "bandages"]
 		},
 		{
 			name: "Prudence Avenue",
@@ -303,12 +304,14 @@ var data = {
 			path: "M 474,785 L 759,785 L 759,952 L 474,952 L 474,785"
 		},
 		{
-			name: "Cimetiere De La Chaine Brise",
-			path: "M 653,789 L 751,789 L 751,953 L 653,953 L 653,789"
+			name: "Broken Chain Cementry",
+			path: "M 653,789 L 751,789 L 751,953 L 653,953 L 653,789",
+			tags: ["bullets"]
 		},
 		{
 			name: "Bellocanto House Threatre",
-			path: "M 290,799 L 371,799 L 371,898 L 290,898 L 290,799"
+			path: "M 290,799 L 371,799 L 371,898 L 290,898 L 290,799",
+			tags: ["cockroaches", "snacks"]
 		},
 		{
 			name: "Las Cunas",
@@ -332,7 +335,8 @@ var data = {
 		},
 		{
 			name: "Grapevine Complex",
-			path: "M 575,545 L 651,545 L 651,740 L 575,740 L 575,545"
+			path: "M 575,545 L 651,545 L 651,740 L 575,740 L 575,545",
+			tags: ["office"]
 		},
 		{
 			name: "Million Bridge",
@@ -349,19 +353,56 @@ var data = {
 		{
 			name: "Saraswati Hall",
 			path: "M 125,30 L 191,30 L 191,97 L 125,97 L 125,30",
-			x: 154,
-			y: 63,
-			size: "14px"
+			tags: ["fertilizer"]
 		},
 		{
 			name: "Zavtra River",
-			path: "M 77,230 L 803,230 L 803,302 L 77,302 L 77,230",
-			x: 601,
-			y: 273
+			path: "M 77,230 L 803,230 L 803,302 L 77,302 L 77,230"
 		},
 		{
 			name: "Anavasi Passage",
-			path: "M 445,409 L 471,409 L 471,483 L 445,483 L 445,409"
+			path: "M 445,409 L 471,409 L 471,483 L 445,483 L 445,409",
+			tags: ["bullets"]
+		},
+		{
+			path: "M 556,158 L 595,157 L 595,174 L 588,182 L 562,182 L 556,176 L 556,158",
+			tags: ["modified bullets", "fertilizer", "meds"]
+		},
+		{
+			path: "M 703,317 L 757,317 L 757,344 L 747,344 L 747,382 L 772,382 L 772,423 L 706,423 L 706,317",
+			tags: ["hardware", "tools"]
+		},
+		{
+			path: "M 118,676 L 225,676 L 225,694 L 118,694 L 118,676",
+			tags: ["bullets"]
+		},
+		{
+			path: "M 59,798 L 76,798 L 76,852 L 84,852 L 84,868 L 120,868 L 120,859 L 127,859 L 127,844 L 135,844 L 135,819 L 127,819 L 127,800 L 143,800 L 143,879 L 59,879 L 59,798",
+			tags: ["bullets"]
+		},
+		{
+			path: "M 177,800 L 193,800 L 193,820 L 186,820 L 186,845 L 201,845 L 201,879 L 177,879 L 177,800",
+			tags: ["bullets"]
+		},
+		{
+			path: "M 243,799 L 254,799 L 254,842 L 244,842 L 244,799",
+			tags: ["bullets"]
+		},
+		{
+			path: "M 244,613 L 278,613 L 278,642 L 244,642 L 244,613",
+			tags: ["bullets"]
+		},
+		{
+			path: "M 246,664 L 284,664 L 284,676 L 246,676 L 246,664",
+			tags: ["modified bullets"]
+		},
+		{
+			path: "M 705,607 L 736,607 L 736,627 L 705,627 L 705,607",
+			tags: ["guns", "weapons", "pistols"]
+		},
+		{
+			path: "M 4,410 L 127,410 L 127,474 L 4,474 L 4,410",
+			tags: ["office"]
 		}
 	],
 	atms: [
@@ -420,6 +461,14 @@ var data = {
 		{
 			x: 310,
 			y: 315
+		},
+		{
+			x: 271,
+			y: 638
+		},
+		{
+			x: 833,
+			y: 561
 		}
 	],
 	shops: [
@@ -430,7 +479,7 @@ var data = {
 			y: 195
 		},
 		{
-			name: "Fertilizer",
+			name: "Fertilizer Shop",
 			tags: ["fertilizer"],
 			x: 381,
 			y: 150
@@ -442,7 +491,7 @@ var data = {
 			y: 154
 		},
 		{
-			name: "Pottery",
+			name: "Pottery Shop",
 			tags: ["pots"],
 			x: 308,
 			y: 104
@@ -496,7 +545,7 @@ var data = {
 			y: 644
 		},
 		{
-			name: "Hardware",
+			name: "Hardware Shop",
 			tags: ["explosives", "mines", "grenades"],
 			x: 102,
 			y: 725
@@ -514,7 +563,7 @@ var data = {
 			y: 731
 		},
 		{
-			name: "Furnature",
+			name: "Furnature Shop",
 			tags: [],
 			x: 620,
 			y: 905
