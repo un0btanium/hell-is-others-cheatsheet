@@ -475,103 +475,120 @@ var data = {
 		{
 			name: "Bank",
 			tags: ["money", "mushrooms", "shrooms", "pills"],
+			img: "./icons/Icon_Bank.png",
 			x: 399,
 			y: 195
 		},
 		{
 			name: "Fertilizer Shop",
 			tags: ["fertilizer"],
+			img: "./icons/Icon_Fertilizer.png",
 			x: 381,
 			y: 150
 		},
 		{
 			name: "Fast Food",
 			tags: ["food", "healing"],
+			img: "./icons/Icon_Fast_Food.png",
 			x: 274,
 			y: 154
 		},
 		{
 			name: "Pottery Shop",
 			tags: ["pots"],
+			img: "./icons/Icon_Pottery.png",
 			x: 308,
 			y: 104
 		},
 		{
 			name: "Carpentry Workshop",
 			tags: [],
+			img: "./icons/Icon_Carpentry.png",
 			x: 325,
 			y: 321
 		},
 		{
 			name: "Bar",
 			tags: ["drink", "energizer"],
+			img: "./icons/Icon_Bar.png",
 			x: 180,
 			y: 356
 		},
 		{
 			name: "Guideshop",
 			tags: [],
+			img: "./icons/Icon_Guideshop.png",
 			x: 114,
 			y: 443
 		},
 		{
 			name: "Pharmacy",
 			tags: ["pills"],
-			x: 278,
-			y: 469
+			img: "./icons/Icon_Pharmacy.png",
+			x: 288,
+			y: 480
 		},
 		{
 			name: "Large Caliber Weapon Shop",
 			tags: ["weapons", "guns"],
+			img: "./icons/Icon_Large_Caliber_Weapons.png",
 			x: 579,
 			y: 359
 		},
 		{
 			name: "Art Store",
 			tags: ["paintings"],
+			img: "./icons/Icon_Art.png",
 			x: 607,
 			y: 476
 		},
 		{
 			name: "Supermarket",
 			tags: ["food", "healing", "health"],
+			img: "./icons/Icon_Supermarket.png",
 			x: 729,
 			y: 460
 		},
 		{
 			name: "Infirmary",
 			tags: ["health", "healing", "medkits", "bandages"],
+			img: "./icons/Icon_Infirmary.png",
 			x: 259,
 			y: 644
 		},
 		{
 			name: "Hardware Shop",
 			tags: ["explosives", "mines", "grenades"],
+			img: "./icons/Icon_Hardware.png",
 			x: 102,
 			y: 725
 		},
 		{
 			name: "Bakery",
 			tags: ["food", "healing", "health"],
+			img: "./icons/Icon_Bakery.png",
 			x: 397,
 			y: 864
 		},
 		{
 			name: "Small Caliber Weapon Shop",
 			tags: ["guns", "weapons", "pistol"],
+			img: "./icons/Icon_Small_Caliber_Weapons.png",
 			x: 612,
 			y: 731
 		},
 		{
 			name: "Furnature Shop",
 			tags: [],
+			img: "./icons/Icon_Furnature.png",
 			x: 620,
 			y: 905
 		},
 		{
 			name: "Church",
 			tags: [],
-			x: 697,
+			img: "./icons/Icon_Church.png",
+			x: 700,
 			y: 846
 		}
 	],

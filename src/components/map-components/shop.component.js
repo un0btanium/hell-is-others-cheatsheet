@@ -15,17 +15,27 @@ export default class Shop extends Component {
 		let offset = 18;
 
 		return (
-			<>
+			<g
+				className="pointerTransparent"
+				onClick={() => this.props.addBookmarks(this.props.shop.name)}
+				onContextMenu={(e) => { e.preventDefault(); this.props.deleteBookmarks(this.props.shop.name) }}
+			>
 				<image
-					className="pointer"
-					href="./shop.png"
-					x={this.props.shop.x - offset}
+					href="./icons/icon.png"
+					x={this.props.shop.x - offset}	
 					y={this.props.shop.y - offset}
-					alt="shop"
-					onClick={() => this.props.addBookmarks(this.props.shop.name)}
-					onContextMenu={(e) => { e.preventDefault(); this.props.deleteBookmarks(this.props.shop.name) }}
+					alt="shop-background"
 				/>
-			</>
+				<image
+					className="invert-colors"
+					href={this.props.shop.img}
+					x={this.props.shop.x - offset + 6}
+					y={this.props.shop.y - offset + 6}
+					height="25px"
+					width="25px"
+					alt="shop-icon"
+				/>
+			</g>
 		);
 	}
 
