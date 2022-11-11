@@ -487,7 +487,7 @@ var data = {
 	shops: [
 		{
 			name: "Bank",
-			tags: ["money", "mushrooms", "shrooms", "pills"],
+			tags: ["money"],
 			img: "./icons/Icon_Bank.png",
 			x: 399,
 			y: 195
