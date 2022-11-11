@@ -62,8 +62,17 @@ var data = {
           name: "Algernon",
           location: {
             address: ["Dünyevi Zevk"],
-            x: 116,
-            y: 426
+            x: 123,
+            y: 428
+          },
+		  showNameBelow: true
+        },
+        {
+          name: "Philippa",
+          location: {
+            address: ["Dünyevi Zevk"],
+            x: 113,
+            y: 414
           }
         },
         {
@@ -113,8 +122,8 @@ var data = {
 			name: "Winston",
 			location: {
 			  address: ["Snake Side"],
-			  x: 620, // TODO make more accurate
-			  y: 470
+			  x: 630,
+			  y: 474
 			}
 		},
 		{
@@ -196,8 +205,8 @@ var data = {
 			name: "Lizzie",
 			location: {
 			  address: ["West Humble", "Las Cunas"],
-			  x: 97,
-			  y: 834
+			  x: 112,
+			  y: 824
 			}
 		},
 		{
@@ -403,6 +412,10 @@ var data = {
 		{
 			path: "M 4,410 L 127,410 L 127,474 L 4,474 L 4,410",
 			tags: ["office"]
+		},
+		{
+			path: "M 325,885 L 334,885 L 334,894 L 325,894 L 325,885",
+			tags: ["fertilizer"]
 		}
 	],
 	atms: [

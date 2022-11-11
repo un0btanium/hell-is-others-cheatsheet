@@ -252,7 +252,6 @@ class App extends Component {
 		}
 
 		if (bookmarksThatNeedSwitching.length > 0) {
-			console.log(bookmarksThatNeedSwitching)
 			let hasDisabled = bookmarksThatNeedSwitching.some(bookmark => bookmark.disabled);
 			let hasEnabled = bookmarksThatNeedSwitching.some(bookmark => !bookmark.disabled);
 			let allEnabled = !hasDisabled && hasEnabled;
