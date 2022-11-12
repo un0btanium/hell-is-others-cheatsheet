@@ -143,6 +143,7 @@ class App extends Component {
 										bookmarks={this.state.bookmarks}
 										settings={this.state.settings}
 										placeholder={this.state.placeholder}
+										searchResults={this.state.searchResults}
 										onSearchFieldChange={this.onSearchFieldChange}
 										onChangeSettings={this.onChangeSettings}
 										addBookmarks={this.addBookmarks}
@@ -227,6 +228,7 @@ class App extends Component {
 		localStorage.setItem('bookmarks', JSON.stringify(bookmarks));
 
 		this.setState({
+			isSearching: false,
 			searchResults: [],
 			bookmarks: bookmarks.sort((a,b) => a.name.localeCompare(b.name)),
 			bookmarkNames: this.getEnabledBookmarks(bookmarks),

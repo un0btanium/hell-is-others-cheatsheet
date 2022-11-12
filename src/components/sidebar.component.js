@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import Form from 'react-bootstrap/Form';
-import { ToggleButton, ToggleButtonGroup } from 'react-bootstrap';
+import { ToggleButton, ToggleButtonGroup, Dropdown } from 'react-bootstrap';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrashCan, faCheckSquare, faSquare } from '@fortawesome/free-regular-svg-icons'
@@ -82,10 +82,25 @@ export default class SideBar extends Component {
 					style={{marginBottom: "20px"}}
 				>
 					<Form.Control
+						autoFocus
 						placeholder={this.props.placeholder}
 						onChange={(e) => this.onSearchFieldChange(e)}
 						value={this.state.searchValue}
+						variant="warning" 
 					/>
+					<Dropdown
+						focusFirstItemOnShow={'keyboard'}
+						show={this.props.searchResults.length > 0}
+						style={{width: "100%"}}
+					>
+						<Dropdown.Menu variant={"dark"}>
+							{this.props.searchResults.map((word, i) => {
+								return (
+									<Dropdown.Item style={{display: "inline-block"}} key={"dropdown-item-" + i} onClick={() => this.props.addBookmarks(word)}>{word}</Dropdown.Item>
+								);
+							})}
+						</Dropdown.Menu>
+					</Dropdown>
 				</Form>
 				<ToggleButtonGroup
 					style={{ width: "100%", marginBottom: "5px" }}
