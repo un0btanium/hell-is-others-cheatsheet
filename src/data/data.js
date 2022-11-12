@@ -345,7 +345,7 @@ var data = {
 		{
 			name: "Grapevine Complex",
 			path: "M 575,545 L 651,545 L 651,740 L 575,740 L 575,545",
-			tags: ["office"]
+			tags: ["office", "cockroaches"]
 		},
 		{
 			name: "Million Bridge",

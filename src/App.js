@@ -38,6 +38,7 @@ class App extends Component {
 			radixTree: this.getInitialRadixTree(),
 			settings: this.getInitialSettings(),
 			placeholder: this.getPlaceholder(data),
+			isSearching: false,
 			searchResults: [],
 			bookmarkNames: this.getEnabledBookmarks(bookmarks),
 			bookmarks: bookmarks
@@ -157,7 +158,7 @@ class App extends Component {
 					<Col sm="12" md="7" style={{ padding: "0" }}>
 						<Map
 							settings={this.state.settings}
-							searchResults={this.state.searchResults.length > 0 ? this.state.searchResults : this.state.bookmarkNames}
+							searchResults={this.state.isSearching ? this.state.searchResults : this.state.bookmarkNames}
 							npcs={this.state.npcs}
 							atms={this.state.atms}
 							locations={this.state.locations}
@@ -173,8 +174,9 @@ class App extends Component {
 	}
 
 	onSearchFieldChange(text) {
-		if(text === '') {
+		if(text === "") {
 			this.setState({
+				isSearching: false,
 				searchResults: [],
 				placeholder: this.getPlaceholder(this.state),
 				bookmarkNames: this.getEnabledBookmarks(this.state.bookmarks)
@@ -184,6 +186,7 @@ class App extends Component {
 		
 		this.state.radixTree.getWords(text).then((searchResults) => {
 			this.setState({
+				isSearching: true,
 				searchResults: searchResults,
 				bookmarkNames: this.getEnabledBookmarks(this.state.bookmarks)
 			});
