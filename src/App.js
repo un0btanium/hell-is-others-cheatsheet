@@ -80,8 +80,8 @@ class App extends Component {
 	getInitialSettings() {
 		let defaultSettings = {
 			showLocations: 2,
-			showNPCs: 1,
-			showATMs: 1,
+			showNPCs: 2,
+			showATMs: 2,
 			showShops: 2,
 			showElevators: 2
 		};
